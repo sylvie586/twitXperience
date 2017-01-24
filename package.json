@@ -1,0 +1,30 @@
+{
+  "name": "twitXperience",
+  "version": "1.0",
+  "description": "Simple project for visualizing the number of tweets containing specific keywords.",
+  "author": "sylvie586 @ Github",
+  "scripts": {
+    "start": "node node.twitstore.js"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylvie586/twitXperience"
+  },
+  "keywords": [
+    "twitXperience"
+  ],
+  "dependencies": {
+    "async": "^0.8.0",
+    "httpdispatcher": "^2.0.1",
+    "mongojs": "^2.4.0",
+    "twit": "^2.2.5",
+  },
+  "preferGlobal": true,
+  "private": true,
+  "publishConfig": {
+    "registry": ""
+  },
+  "analyze": true,
+  "license": "UNLICENSED"
+}
