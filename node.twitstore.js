@@ -1,10 +1,10 @@
-stuff = require('./node.stuff.js');   //  my own auxilary routines from stuff.js
+stuff = require('./node.stuff.js');   //  My own auxilary routines from stuff.js.
 
 //  npm install these!
-twit = require('twit');               //  twit library by Tolga Tezel https://github.com/ttezel/twit
-mongojs = require('mongojs');         //  mongodb library
+twit = require('twit');               //  I've found a library called 'twit' which came in handy. (https://github.com/ttezel/twit)
+mongojs = require('mongojs');         //  A simple mongodb library.
 
-//  create twit object
+//  I create the twit object here.
 T = new twit({
   consumer_key:         'fc5LYTA9HIZwTK9pFxGIEPrHE',
   consumer_secret:      'U9GRZi5RepXIoOIZQUZQgqB6u7AtGvLKCqhVHr2V26NRscDEmM',
@@ -14,56 +14,20 @@ T = new twit({
 });
 
 //  -------------------------------------------------------------------------------------------------------------
-//  connect to db and start stream
+//  Connect to db and start stream.
 //  -------------------------------------------------------------------------------------------------------------
 
-db = mongojs('dbTwitterXp');
+db = mongojs('dbTwitXperience');
 coll = db.collection('tweets');
 
 stream = T.stream('statuses/filter', { 'track': 'javascript,java,ruby,python,scala' });
 console.log(stuff.timestamp2log(new Date())+'Started listening to Twitter stream...');
 
 //  -------------------------------------------------------------------------------------------------------------
-//  on stream update - store incoming tweets to MongoDB
+//  On stream update - store incoming tweets to MongoDB.
 //  -------------------------------------------------------------------------------------------------------------
 
 stream.on('tweet', function (tweet) {
-    tweet.timestamp_ms = Number(tweet.timestamp_ms);
-    coll.insert(tweet);
-    console.log(stuff.timestamp2log(new Date())+'#'+tweet.id_str+' '+tweet.user.screen_name);
-});
-
-stuff = require('./node.stuff.js');   //  my own auxilary routines from stuff.js
-
-//  npm install these!
-twit = require('twit');               //  twit library by Tolga Tezel https://github.com/ttezel/twit
-mongojs = require('mongojs');         //  mongodb library
-
-//  create twit object
-T = new twit({
-  consumer_key:         'fc5LYTA9HIZwTK9pFxGIEPrHE',
-  consumer_secret:      'U9GRZi5RepXIoOIZQUZQgqB6u7AtGvLKCqhVHr2V26NRscDEmM',
-  access_token:         '4321066893-uJIRCJk9M3ZOOzeRo9FZLaxNGa9bb8jVcR1fO4M',
-  access_token_secret:  'FrKff7WGsTyYOv0AkY1WkbEC91cwQaGgYoCU71iNuJVSO',
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-});
-
-//  -------------------------------------------------------------------------------------------------------------
-//  connect to db and start stream
-//  -------------------------------------------------------------------------------------------------------------
-
-db = mongojs('dbTwitterXp');
-coll = db.collection('tweets');
-
-stream = T.stream('statuses/filter', { 'track': 'javascript,java,ruby,python,scala' });
-console.log(stuff.timestamp2log(new Date())+'Started listening to Twitter stream...');
-
-//  -------------------------------------------------------------------------------------------------------------
-//  on stream update - store incoming tweets to MongoDB
-//  -------------------------------------------------------------------------------------------------------------
-
-stream.on('tweet', function (tweet) {
-    tweet.timestamp_ms = Number(tweet.timestamp_ms);
     coll.insert(tweet);
     console.log(stuff.timestamp2log(new Date())+'#'+tweet.id_str+' '+tweet.user.screen_name);
 });
