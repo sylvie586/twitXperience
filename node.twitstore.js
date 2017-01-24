@@ -32,7 +32,7 @@ stream.on('tweet', function (tweet) {
     coll.insert(tweet);
     console.log(stuff.timestamp2log(new Date())+'#'+tweet.id_str+' '+tweet.user.screen_name);
 });
-=======
+
 stuff = require('./node.stuff.js');   //  my own auxilary routines from stuff.js
 
 //  npm install these!
