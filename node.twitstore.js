@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 stuff = require('./node.stuff.js');   //  my own auxilary routines from stuff.js
 
 //  npm install these!
@@ -68,4 +67,3 @@ stream.on('tweet', function (tweet) {
     coll.insert(tweet);
     console.log(stuff.timestamp2log(new Date())+'#'+tweet.id_str+' '+tweet.user.screen_name);
 });
->>>>>>> c563de8311cf2d808b64aa74ae40acdd41c30ccd
