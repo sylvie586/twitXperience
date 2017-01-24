@@ -1,0 +1,34 @@
+body {
+    font-family: sans-serif;
+}
+
+.chart {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: 22em;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-flow: flex-start;
+  align-items: flex-end;
+}
+
+.chart div {
+    border: 1px solid black;
+    border-bottom: none;
+    background-color: #00DDEE;
+    margin-right: 1em;
+    min-width: 6em;
+    width: 6em;
+    max-width: 6em;
+    text-align: center;
+    display: inline-block;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10px;
+    color: #000000;
+    min-height: 1.5em;
+    padding: 1em 0 1em 0;
+}
